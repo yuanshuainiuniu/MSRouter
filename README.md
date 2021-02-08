@@ -1,9 +1,9 @@
 # MSRouter
 
-[![CI Status](https://img.shields.io/travis/717999274@qq.com/MSRouter.svg?style=flat)](https://travis-ci.org/717999274@qq.com/MSRouter)
-[![Version](https://img.shields.io/cocoapods/v/MSRouter.svg?style=flat)](https://cocoapods.org/pods/MSRouter)
-[![License](https://img.shields.io/cocoapods/l/MSRouter.svg?style=flat)](https://cocoapods.org/pods/MSRouter)
-[![Platform](https://img.shields.io/cocoapods/p/MSRouter.svg?style=flat)](https://cocoapods.org/pods/MSRouter)
+[![CI Status](https://img.shields.io/travis/717999274@qq.com/ZRouter.svg?style=flat)](https://travis-ci.org/717999274@qq.com/ZRouter)
+[![Version](https://img.shields.io/cocoapods/v/ZRouter.svg?style=flat)](https://cocoapods.org/pods/ZRouter)
+[![License](https://img.shields.io/cocoapods/l/ZRouter.svg?style=flat)](https://cocoapods.org/pods/ZRouter)
+[![Platform](https://img.shields.io/cocoapods/p/ZRouter.svg?style=flat)](https://cocoapods.org/pods/ZRouter)
 
 ## Example
 
