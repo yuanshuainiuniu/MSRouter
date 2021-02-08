@@ -15,11 +15,11 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		80BF89F208900F1899FDBDDB /* Pods_ZRouter_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDA967A6E79DA955B261040 /* Pods_ZRouter_Example.framework */; };
-		F3AC2B3D25CFBED400031BAD /* MSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC2B3C25CFBED400031BAD /* MSRouter.swift */; };
-		F3AC2B4125CFECAC00031BAD /* router.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3AC2B4025CFECAC00031BAD /* router.plist */; };
 		F3AC2B4525CFECEB00031BAD /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC2B4425CFECEB00031BAD /* ViewController1.swift */; };
 		F3AC2B5825CFFDCD00031BAD /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC2B5625CFFDCD00031BAD /* ViewController2.swift */; };
 		F3AC2B5925CFFDCE00031BAD /* ViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3AC2B5725CFFDCD00031BAD /* ViewController2.xib */; };
+		F3F0098425D128CA00FDCBF1 /* MSRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F0098125D128CA00FDCBF1 /* MSRouter.swift */; };
+		F3F0098525D128CA00FDCBF1 /* router.plist in Resources */ = {isa = PBXBuildFile; fileRef = F3F0098325D128CA00FDCBF1 /* router.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,16 +47,16 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		689692B6355A020E4AC6759E /* Pods_ZRouter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZRouter_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		87A04AC12F0F4CF7E9FB7564 /* ZRouter.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ZRouter.podspec; path = ../ZRouter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		87A04AC12F0F4CF7E9FB7564 /* MSRouter.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = MSRouter.podspec; path = ../MSRouter.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A0CDBDB7B449036373ACAD64 /* Pods-ZRouter_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZRouter_Example.debug.xcconfig"; path = "Target Support Files/Pods-ZRouter_Example/Pods-ZRouter_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A7E46C9681D1E557A9BA37A8 /* Pods-ZRouter_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZRouter_Tests.release.xcconfig"; path = "Target Support Files/Pods-ZRouter_Tests/Pods-ZRouter_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D0E040B57D485039B386F81F /* Pods-ZRouter_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZRouter_Example.release.xcconfig"; path = "Target Support Files/Pods-ZRouter_Example/Pods-ZRouter_Example.release.xcconfig"; sourceTree = "<group>"; };
 		E84FBE9B7C17DB867B581826 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		F3AC2B3C25CFBED400031BAD /* MSRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSRouter.swift; sourceTree = "<group>"; };
-		F3AC2B4025CFECAC00031BAD /* router.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = router.plist; sourceTree = "<group>"; };
 		F3AC2B4425CFECEB00031BAD /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		F3AC2B5625CFFDCD00031BAD /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		F3AC2B5725CFFDCD00031BAD /* ViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController2.xib; sourceTree = "<group>"; };
+		F3F0098125D128CA00FDCBF1 /* MSRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSRouter.swift; sourceTree = "<group>"; };
+		F3F0098325D128CA00FDCBF1 /* router.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = router.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
-				F3AC2B3325CFBEAA00031BAD /* ZRouter */,
+				F3F0097F25D128CA00FDCBF1 /* MSRouter */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for ZRouter */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -146,7 +146,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				87A04AC12F0F4CF7E9FB7564 /* ZRouter.podspec */,
+				87A04AC12F0F4CF7E9FB7564 /* MSRouter.podspec */,
 				E84FBE9B7C17DB867B581826 /* README.md */,
 				12B2F1C54D28C2DC814D0391 /* LICENSE */,
 			);
@@ -173,28 +173,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F3AC2B3325CFBEAA00031BAD /* ZRouter */ = {
+		F3F0097F25D128CA00FDCBF1 /* MSRouter */ = {
 			isa = PBXGroup;
 			children = (
-				F3AC2B3425CFBEAA00031BAD /* Classes */,
-				F3AC2B3625CFBEAA00031BAD /* Assets */,
+				F3F0098025D128CA00FDCBF1 /* Classes */,
+				F3F0098225D128CA00FDCBF1 /* Assets */,
 			);
-			name = ZRouter;
-			path = ../ZRouter;
+			name = MSRouter;
+			path = ../MSRouter;
 			sourceTree = "<group>";
 		};
-		F3AC2B3425CFBEAA00031BAD /* Classes */ = {
+		F3F0098025D128CA00FDCBF1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F3AC2B3C25CFBED400031BAD /* MSRouter.swift */,
+				F3F0098125D128CA00FDCBF1 /* MSRouter.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		F3AC2B3625CFBEAA00031BAD /* Assets */ = {
+		F3F0098225D128CA00FDCBF1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				F3AC2B4025CFECAC00031BAD /* router.plist */,
+				F3F0098325D128CA00FDCBF1 /* router.plist */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -286,8 +286,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3AC2B5925CFFDCE00031BAD /* ViewController2.xib in Resources */,
+				F3F0098525D128CA00FDCBF1 /* router.plist in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				F3AC2B4125CFECAC00031BAD /* router.plist in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
@@ -310,11 +310,11 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ZRouter_Example/Pods-ZRouter_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ZRouter/ZRouter.framework",
+				"${BUILT_PRODUCTS_DIR}/MSRouter/MSRouter.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZRouter.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MSRouter.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -375,7 +375,7 @@
 				F3AC2B5825CFFDCD00031BAD /* ViewController2.swift in Sources */,
 				F3AC2B4525CFECEB00031BAD /* ViewController1.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				F3AC2B3D25CFBED400031BAD /* MSRouter.swift in Sources */,
+				F3F0098425D128CA00FDCBF1 /* MSRouter.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

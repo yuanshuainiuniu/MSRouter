@@ -1,0 +1,6 @@
+framework module MSRouter {
+  umbrella header "MSRouter-umbrella.h"
+
+  export *
+  module * { export * }
+}

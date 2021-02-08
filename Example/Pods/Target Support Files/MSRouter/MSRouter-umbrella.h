@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double ZRouterVersionNumber;
-FOUNDATION_EXPORT const unsigned char ZRouterVersionString[];
+FOUNDATION_EXPORT double MSRouterVersionNumber;
+FOUNDATION_EXPORT const unsigned char MSRouterVersionString[];
 

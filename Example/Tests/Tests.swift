@@ -1,5 +1,5 @@
 import XCTest
-import ZRouter
+import MSRouter
 
 class Tests: XCTestCase {
     

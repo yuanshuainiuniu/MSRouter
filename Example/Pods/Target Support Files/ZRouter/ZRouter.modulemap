@@ -1,6 +1,0 @@
-framework module ZRouter {
-  umbrella header "ZRouter-umbrella.h"
-
-  export *
-  module * { export * }
-}

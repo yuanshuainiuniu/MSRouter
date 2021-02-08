@@ -3,7 +3,7 @@ use_frameworks!
 platform :ios, '9.0'
 
 target 'ZRouter_Example' do
-  pod 'ZRouter', :path => '../'
+  pod 'MSRouter', :path => '../'
 
   target 'ZRouter_Tests' do
     inherit! :search_paths

@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = 'ZRouter'
+  s.name             = 'MSRouter'
   s.version          = '0.1.0'
   s.summary          = '路由组件'
 
@@ -15,17 +15,9 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/yuanshuainiuniu/MSRouter.git'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Marshal' => 'marshal819@zto.com' }
-  s.source           = { :git => 'https://github.com/yuanshuainiuniu/MSRouter.git', :tag => s.version.to }
+  s.source           = { :git => 'https://github.com/yuanshuainiuniu/MSRouter.git', :tag => s.version }
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'ZRouter/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'ZRouter' => ['ZRouter/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source_files = 'MSRouter/Classes/**/*'
 end
