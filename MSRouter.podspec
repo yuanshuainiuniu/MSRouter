@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'MSRouter'
   s.version          = '0.1.0'
-  s.summary          = '路由组件'
+  s.summary          = '路由组件swift5.0'
 
 
   s.homepage         = 'https://github.com/yuanshuainiuniu/MSRouter.git'
@@ -20,4 +20,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'MSRouter/Classes/**/*'
+  
+  s.swift_version         = "5.0"
+      s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+      s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
