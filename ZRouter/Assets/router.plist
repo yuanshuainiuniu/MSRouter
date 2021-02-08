@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>url</key>
+		<string>vc1</string>
+		<key>object</key>
+		<string>V1RouterBridge</string>
+	</dict>
+	<dict>
+		<key>url</key>
+		<string>vc2</string>
+		<key>object</key>
+		<string>ViewController2</string>
+	</dict>
+</array>
+</plist>

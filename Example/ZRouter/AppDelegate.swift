@@ -14,8 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+//        ZRouter.addRouter(withParams: ["url":"vc1","object":"V1RouterBridge"])
+//        ZRouter.addRouter(withParams: ["url":"vc2","object":"ViewController2"])
+//        ZRouter.addRouter(withParams: ["url":"vc","object":"ViewController"])
+        let path = Bundle.main.path(forResource: "router", ofType: "plist")
+        MSRouter.addRouter(withPlistPath: path)
+        
         return true
     }
 

@@ -19,6 +19,19 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    var callBack = { (data:String) in
+        print("----\(data)")
+    }
+    
 
+    @IBAction func clickAction(_ sender: UIButton) {
+        MSRouter.handleUrl("vc1?title=vc1&present=0", ["callback":callBack])
+    }
+    @IBAction func clickV2(_ sender: Any) {
+        MSRouter.handleUrl("vc2?title=vc2", ["callback":callBack])
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 }
 

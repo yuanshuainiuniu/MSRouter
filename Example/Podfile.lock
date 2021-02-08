@@ -1,0 +1,16 @@
+PODS:
+  - ZRouter (0.1.0)
+
+DEPENDENCIES:
+  - ZRouter (from `../`)
+
+EXTERNAL SOURCES:
+  ZRouter:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ZRouter: f02450ec024ef28ef57eefd638eef88c4d85efc4
+
+PODFILE CHECKSUM: 9c7176cd9cf410b71d2bf548a789119d51bbc0c9
+
+COCOAPODS: 1.10.1

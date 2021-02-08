@@ -1,0 +1,6 @@
+framework module Pods_ZRouter_Tests {
+  umbrella header "Pods-ZRouter_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

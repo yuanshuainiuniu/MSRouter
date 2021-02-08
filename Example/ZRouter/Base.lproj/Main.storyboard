@@ -1,30 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AfS-k8-tpt">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Navigation Controller-->
+        <scene sceneID="mfl-sA-Ruw">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ZRouter_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <navigationController id="AfS-k8-tpt" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c2I-f6-pJ2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vPl-F7-Qo6" kind="relationship" relationship="rootViewController" id="KpJ-ds-FbT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n7S-3J-wNE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-1698" y="-1881"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3pg-UM-oCi">
+            <objects>
+                <viewController id="vPl-F7-Qo6" customClass="ViewController" customModule="ZRouter_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5l9-ma-mtE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y6f-vD-l78"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Q8R-kD-wQY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NLJ-dd-JOq">
+                                <rect key="frame" x="149.5" y="318.5" width="76" height="30"/>
+                                <state key="normal" title="点击跳转v1"/>
+                                <connections>
+                                    <action selector="clickAction:" destination="vPl-F7-Qo6" eventType="touchUpInside" id="58I-UH-e64"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1E-RV-PAg">
+                                <rect key="frame" x="148.5" y="396" width="78" height="30"/>
+                                <state key="normal" title="点击跳转v2"/>
+                                <connections>
+                                    <action selector="clickV2:" destination="vPl-F7-Qo6" eventType="touchUpInside" id="7nq-as-Wcf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NLJ-dd-JOq" firstAttribute="centerY" secondItem="Q8R-kD-wQY" secondAttribute="centerY" id="7Rr-mG-6il"/>
+                            <constraint firstItem="NLJ-dd-JOq" firstAttribute="centerX" secondItem="Q8R-kD-wQY" secondAttribute="centerX" id="8U4-CJ-R06"/>
+                            <constraint firstItem="W1E-RV-PAg" firstAttribute="centerX" secondItem="Q8R-kD-wQY" secondAttribute="centerX" id="DfP-tk-zgM"/>
+                            <constraint firstItem="W1E-RV-PAg" firstAttribute="top" secondItem="NLJ-dd-JOq" secondAttribute="bottom" constant="47.5" id="sL6-SI-4zG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="KQv-hx-Rb0"/>
+                    <connections>
+                        <segue destination="4sT-5A-UVC" kind="show" id="Pks-Cd-hah"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0Y-KW-PEn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-831" y="-1881"/>
+        </scene>
+        <!--View Controller1-->
+        <scene sceneID="haj-R7-LjF">
+            <objects>
+                <viewController storyboardIdentifier="ViewController1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4sT-5A-UVC" customClass="ViewController1" customModule="ZRouter_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AvA-ns-y1L"/>
+                        <viewControllerLayoutGuide type="bottom" id="ko2-YO-olV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ykd-aP-9Md">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mg-Sy-MvQ">
+                                <rect key="frame" x="141.5" y="318.5" width="92" height="30"/>
+                                <state key="normal" title="携带参数返回"/>
+                                <connections>
+                                    <action selector="backAction:" destination="4sT-5A-UVC" eventType="touchUpInside" id="GoC-3V-rx0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                        <constraints>
+                            <constraint firstItem="5Mg-Sy-MvQ" firstAttribute="centerX" secondItem="ykd-aP-9Md" secondAttribute="centerX" id="GPa-FO-UVt"/>
+                            <constraint firstItem="5Mg-Sy-MvQ" firstAttribute="centerY" secondItem="ykd-aP-9Md" secondAttribute="centerY" id="RSR-qp-XMU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="LGW-vY-pgZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0E-L3-giV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-831" y="-1109"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
