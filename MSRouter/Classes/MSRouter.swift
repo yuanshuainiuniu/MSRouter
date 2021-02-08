@@ -159,7 +159,19 @@ let ZObject = "object"
     /// 获取当前栈导航控制器
     /// - Returns: 导航
     public static func getNavigation() -> UINavigationController?{
-        if let window = UIApplication.shared.delegate?.window,let root = window?.rootViewController {
+        var currentWindow = UIApplication.shared.delegate?.window
+        if currentWindow == nil {
+            if #available(iOS 13.0, *) {
+                currentWindow = (UIApplication.shared.connectedScenes.first?.delegate as? UIWindowSceneDelegate)?.window
+            } else {
+                // Fallback on earlier versions
+            }
+            if currentWindow == nil {
+                currentWindow = UIApplication.shared.keyWindow
+            }
+        }
+        
+        if let window = currentWindow,let root = window?.rootViewController {
             if var presentVC = root.presentedViewController,presentVC.isKind(of: UIAlertController.self){
                 while presentVC.presentedViewController != nil {
                     if presentVC.isKind(of: UINavigationController.self) {
