@@ -20,7 +20,7 @@ it, simply add the following line to your Podfile:
 pod 'MSRouter'
 ```
 ## 注册路由
-```
+```swift
 //手动注册路由,如果已经被注册过，返回注册失败的路由地址
 MSRouter.addRouter(withParams: ["url":"vc1","object":"V1RouterBridge"], forModule: moduleName) { (res) in
     print("注册失败的链接：\(res)")
@@ -34,7 +34,7 @@ MSRouter.addRouter(withPlistPath: path, forModule: moduleName) { (res) in
 }
 ```
 ## 访问路由
-```
+```swift
 //路由链接：scheme://host?xx=aa&yy=bb,路由识别通过注册url与scheme://host进行匹配
 var callBack = { (data:String) in
     print("----\(data)")
@@ -59,9 +59,10 @@ override func viewDidLoad() {
 }
 ```
 ## 拦截路由
-```
-//通过MSRouterProtocol协议拦截路由，自定义处理逻辑，注路由拦截类必须继承自NSObject
 
+
+```swift
+//通过MSRouterProtocol协议拦截路由，自定义处理逻辑，注路由拦截类必须继承自NSObject
 class V1RouterBridge:NSObject {
     override func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
         let res = MSRouterResponse()
