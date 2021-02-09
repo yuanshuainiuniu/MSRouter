@@ -20,6 +20,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '9.0'
 
   s.source_files = 'MSRouter/Classes/**/*'
+  s.resource_bundles = {
+      s.name => 'MSRouter/Assets/**/*'
+  }
   
   s.swift_version         = "5.0"
       s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }

@@ -249,3 +249,20 @@ extension NSObject:MSRouterProtocol{
         static let ms_routerKey = UnsafeRawPointer(bitPattern: "_buttfly_ms_routerKey".hashValue)!
     }
 }
+public extension Bundle{
+    @objc class func ms_buldle(forModule name:String!) -> Bundle? {
+        var bundlePath:String?
+       if let path = Bundle.main.path(forResource: name, ofType: "bundle") {
+           bundlePath = path
+       }else{
+        var path1 = name
+        if path1!.contains("-") {
+            path1 = path1!.replacingOccurrences(of: "-", with: "_")
+        }
+        let fullPath = "Frameworks/" + path1! + ".framework/" + name
+        
+           bundlePath = Bundle.main.path(forResource: fullPath, ofType: "bundle")
+       }
+       return Bundle(path: bundlePath ?? "")
+    }
+}
