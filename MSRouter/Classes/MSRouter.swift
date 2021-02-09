@@ -8,8 +8,12 @@
 
 import UIKit
 
-let ZUrl = "url"
-let ZObject = "object"
+let MSUrl = "url"
+let MSObject = "object"
+let MSModule = "module"
+let MSKey = "key"
+
+
 
 /// 发起路由请求类
 @objc public class MSRouterRequest:NSObject{
@@ -131,29 +135,87 @@ let ZObject = "object"
     public static func getObjectClass(fromUrl:String) -> AnyObject?{
         for item in ZRouterManager.shared.routerList {
             if let map = item as? [String:Any],let host = getHost(fromUrl: fromUrl) {
-                if let url = map[ZUrl] as? String,host == url {
-                    if let object = map[ZObject] as? String {
-                        let workName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
-                        return NSClassFromString("\(workName).\(object)")
+                if let url = map[MSUrl] as? String,host == url {
+                    if let object = map[MSObject] as? String {
+                        var className: AnyClass? = NSClassFromString(object)
+                        if className == nil {
+                            var moduleName = ""
+                            if let module = map[MSModule] as? String,!module.isEmpty {
+                                moduleName = module
+                            }else{
+                                moduleName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
+                            }
+                            className = NSClassFromString("\(moduleName).\(object)")
+
+                        }
+                        return className
                     }
                 }
             }
         }
+        
+                
         return nil
     }
     
     /// 通过plist列表注册路由
-    /// - Parameter PlistPath: plist路径
-    public static func addRouter(withPlistPath plistPath:String?){
-        guard let plistPath = plistPath else { return }
-        guard let list = NSArray(contentsOfFile: plistPath) as? [[AnyHashable:Any]] else { return }
-        ZRouterManager.shared.routerList.append(contentsOf: list)
+    /// - Parameters:
+    ///   - plistPath: plist路径
+    ///   - name: module 名称，为空的话默认主工程module
+    ///   - completed: 返回注册失败的路由
+    public static func addRouter(withPlistPath plistPath:String?,forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
+        DispatchQueue.global().async {
+            guard let plistPath = plistPath else { return }
+            guard let list = NSArray(contentsOfFile: plistPath) as? [[AnyHashable:Any]] else { return }
+            var temp = [String]()
+            let moduleName = (name ?? "")
+            for item in list{
+                if let url = item[MSUrl] as? String{
+                    let moduleUrl = url + moduleName
+                    for cacheItem in ZRouterManager.shared.routerList {
+                        if let cacheUrl = cacheItem[MSKey] as? String,cacheUrl == moduleUrl {
+                            temp.append(url)
+                            break
+                        }
+                    }
+                    var module = item
+                    module[MSKey] = moduleUrl
+                    module[MSModule] = moduleName
+                    ZRouterManager.shared.routerList.append(module)
+                }
+            }
+            DispatchQueue.main.async {
+                completed?(temp)
+            }
+        }
     }
     
     /// 注册单个路由
-    /// - Parameter params: {url:String,object:String}
-    public static func addRouter(withParams params:[AnyHashable:Any]){
-        ZRouterManager.shared.routerList.append(params)
+    /// - Parameters:
+    ///   - params: {url:String,object:String}
+    ///   - name: module 名称，为空的话默认主工程module
+    ///   - completed: 返回注册失败的路由
+    public static func addRouter(withParams params:[AnyHashable:Any],forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
+        DispatchQueue.global().async {
+            var temp = [String]()
+            let moduleName = (name ?? "")
+            if let url = params[MSUrl] as? String{
+                let moduleUrl = url + moduleName
+                for cacheItem in ZRouterManager.shared.routerList {
+                    if let cacheUrl = cacheItem[MSKey] as? String,cacheUrl == moduleUrl {
+                        temp.append(url)
+                        break
+                    }
+                }
+                var module = params
+                module[MSKey] = moduleUrl
+                module[MSModule] = moduleName
+                ZRouterManager.shared.routerList.append(module)
+            }
+            DispatchQueue.main.async {
+                completed?(temp)
+            }
+        }
     }
     
     /// 获取当前栈导航控制器
@@ -250,16 +312,16 @@ extension NSObject:MSRouterProtocol{
     }
 }
 public extension Bundle{
-    @objc class func ms_buldle(forModule name:String!) -> Bundle? {
+    @objc class func ms_buldle(forModule name:String) -> Bundle? {
         var bundlePath:String?
        if let path = Bundle.main.path(forResource: name, ofType: "bundle") {
            bundlePath = path
        }else{
         var path1 = name
-        if path1!.contains("-") {
-            path1 = path1!.replacingOccurrences(of: "-", with: "_")
+        if path1.contains("-") {
+            path1 = path1.replacingOccurrences(of: "-", with: "_")
         }
-        let fullPath = "Frameworks/" + path1! + ".framework/" + name
+        let fullPath = "Frameworks/" + path1 + ".framework/" + name
         
            bundlePath = Bundle.main.path(forResource: fullPath, ofType: "bundle")
        }

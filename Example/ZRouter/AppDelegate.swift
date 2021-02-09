@@ -15,12 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        ZRouter.addRouter(withParams: ["url":"vc1","object":"V1RouterBridge"])
-//        ZRouter.addRouter(withParams: ["url":"vc2","object":"ViewController2"])
-//        ZRouter.addRouter(withParams: ["url":"vc","object":"ViewController"])
+        
+        
+        let moduleName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
+        //手动注册路由
+        MSRouter.addRouter(withParams: ["url":"vc1","object":"V1RouterBridge"], forModule: moduleName) { (res) in
+            print("注册失败的链接：\(res)")
+            
+            
+        }
+        //通过配置文件注册路由
         let path = Bundle.main.path(forResource: "router", ofType: "plist")
-        MSRouter.addRouter(withPlistPath: path)
+        MSRouter.addRouter(withPlistPath: path, forModule: moduleName) { (res) in
+            print("注册失败的链接：\(res)")
+        }
         
         return true
     }
