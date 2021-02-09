@@ -50,7 +50,7 @@ class ViewController1: UIViewController {
 }
 
 class V1RouterBridge:NSObject {
-    override func handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
+    override func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
         let res = MSRouterResponse()
         res.object = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "ViewController1")
         request.presented = true

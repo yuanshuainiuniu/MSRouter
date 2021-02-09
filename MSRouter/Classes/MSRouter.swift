@@ -85,7 +85,7 @@ let MSKey = "key"
 @objc public protocol MSRouterProtocol:NSObjectProtocol{
     /// 路由处理
     /// - Parameter request:
-    @objc optional func handleRouter(_ request:MSRouterRequest) -> MSRouterResponse?
+    @objc optional func ms_handleRouter(_ request:MSRouterRequest) -> MSRouterResponse?
     
 }
 
@@ -107,8 +107,8 @@ let MSKey = "key"
             
             
             if let delegate:MSRouterProtocol = handle as? MSRouterProtocol{
-                if delegate.responds(to: #selector(MSRouterProtocol.handleRouter(_:))) {
-                    if let response = delegate.handleRouter?(request) {
+                if delegate.responds(to: #selector(MSRouterProtocol.ms_handleRouter(_:))) {
+                    if let response = delegate.ms_handleRouter?(request) {
                         handle = response.object
                     }
                 }
@@ -293,7 +293,7 @@ class ZRouterManager {
 }
 
 extension NSObject:MSRouterProtocol{
-    public func handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
+    public func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
         let response = MSRouterResponse()
         response.object = self
         return response
