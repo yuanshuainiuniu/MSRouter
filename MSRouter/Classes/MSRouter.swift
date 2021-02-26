@@ -98,23 +98,36 @@ let MSKey = "key"
     ///   - nativeParams: {block:回调}
     @discardableResult
     public static func handleUrl(_ url:String,_ nativeParams:[AnyHashable:Any]?) -> Bool?{
-        if let objectClass = getObjectClass(fromUrl: url) as? NSObject.Type {//存在注册路由
-            var handle:Any? = objectClass.init()
+        
+        var handler:Any? = nil
+        if let routerObject = ZRouterManager.shared.routerObjectLsit[url] {
+            handler = routerObject
+            
+        }else if let objectClass = getObjectClass(fromUrl: url) as? NSObject.Type {
+            handler = objectClass.init()
+        }
+        if let delegate:MSRouterProtocol = handler as? MSRouterProtocol{
             let request = MSRouterRequest()
             request.url = url
             request.nativeParams = nativeParams
             request.params = getParams(fromUrl: url)
             
-            
-            if let delegate:MSRouterProtocol = handle as? MSRouterProtocol{
-                if delegate.responds(to: #selector(MSRouterProtocol.ms_handleRouter(_:))) {
-                    if let response = delegate.ms_handleRouter?(request) {
-                        handle = response.object
-                    }
+            var mDelegate:MSRouterProtocol = delegate
+            if let router = handler as? ZRouterObject{
+                if let handleObject = router.object{
+                    mDelegate = handleObject
                 }
-                
+              if let handlerBlock = router.handler{
+                    handlerBlock(request)
+                    return true
+              }
             }
-            if let vc = handle as? UIViewController,let navi = getNavigation(){
+            if mDelegate.responds(to: #selector(MSRouterProtocol.ms_handleRouter(_:))) {
+                if let response = mDelegate.ms_handleRouter?(request) {
+                    handler = response.object
+                }
+            }
+            if let vc = handler as? UIViewController,let navi = getNavigation(){
                 vc.ms_routerRequest = request
                 if request.presented {
                     vc.modalPresentationStyle = request.presentedType
@@ -218,6 +231,28 @@ let MSKey = "key"
         }
     }
     
+    /// target-action注册路由
+    /// - Parameters:
+    ///   - url: 路由链接
+    ///   - object: target
+    ///   - completed: 注册结果
+    ///   - handler: action
+    public static func addRouter(withUrl url:String,forObject object:NSObject,completed:((_ success: Bool)->())? = nil,handler:((MSRouterRequest)->())? = nil){
+        let manager = ZRouterManager.shared
+        DispatchQueue.main.async {
+            let hasCache = manager.routerObjectLsit[url] != nil
+            if !hasCache{
+                var router = ZRouterObject()
+                router.url = url
+                router.object = object
+                router.handler = handler
+                manager.routerObjectLsit[url] = router
+            }
+            completed?(!hasCache)
+        }
+        
+    }
+    
     /// 获取当前栈导航控制器
     /// - Returns: 导航
     public static func getNavigation() -> UINavigationController?{
@@ -284,12 +319,23 @@ let MSKey = "key"
     
 }
 
+/// 路由管理器
 class ZRouterManager {
-    
     static let shared = ZRouterManager()
     //private
+    
+    /// 缓存路由表
     var routerList = [[AnyHashable:Any]]()
     
+    /// 缓存路由实例
+    var routerObjectLsit = [AnyHashable:ZRouterObject]()
+    
+}
+//
+struct ZRouterObject {
+    var url:String?
+    var object:NSObject?
+    var handler:((MSRouterRequest)->())?
 }
 
 extension NSObject:MSRouterProtocol{

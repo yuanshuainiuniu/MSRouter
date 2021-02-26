@@ -30,6 +30,10 @@ class ViewController: UIViewController {
     @IBAction func clickV2(_ sender: Any) {
         MSRouter.handleUrl("vc2?title=vc2", ["callback":callBack])
     }
+    @IBAction func clickV3(_ sender: Any) {
+        MSRouter.handleUrl("RouterAdapter1", nil)
+//        MSRouter.handleUrl("RouterAdapter2", nil)
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }

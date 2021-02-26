@@ -39,15 +39,15 @@
 /* Begin PBXFileReference section */
 		04CBAD6335F40840CBDCE7438F0856AF /* MSRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MSRouter.swift; path = MSRouter/Classes/MSRouter.swift; sourceTree = "<group>"; };
 		08B66742A151BA6E3308096C6C63EA47 /* Pods-ZRouter_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZRouter_Example.release.xcconfig"; sourceTree = "<group>"; };
-		1426E2474D6D7809B3930C3971BFA3BF /* MSRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = MSRouter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1426E2474D6D7809B3930C3971BFA3BF /* MSRouter.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = MSRouter.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		2FEB5E9AF5A98C5543159889AB51FCCA /* Pods-ZRouter_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZRouter_Example-dummy.m"; sourceTree = "<group>"; };
 		37AC819CF968391836E5062E825B66AD /* Pods-ZRouter_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZRouter_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		3B0777ECA2E189EA2B188A2B79D2F54B /* Pods-ZRouter_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZRouter_Tests-umbrella.h"; sourceTree = "<group>"; };
-		44CFDE51B508A4512A39B8C4A0122B8F /* MSRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MSRouter.framework; path = MSRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44CFDE51B508A4512A39B8C4A0122B8F /* MSRouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MSRouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B6B86474E6AC6C733C5B15875649C6F /* Pods-ZRouter_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZRouter_Example-umbrella.h"; sourceTree = "<group>"; };
 		4ED66C83172F93F5067B86C11A8D0F38 /* Pods-ZRouter_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZRouter_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		4F033F8F8EA7C8CA6CD69C7A96306ADE /* MSRouter-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MSRouter-Info.plist"; sourceTree = "<group>"; };
-		4FE5D1F4C2A1BCEE2CAFD7DD25B846C1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		4FE5D1F4C2A1BCEE2CAFD7DD25B846C1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		529DD3390C6DB23303807AF0492805C3 /* Pods-ZRouter_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZRouter_Tests-Info.plist"; sourceTree = "<group>"; };
 		65D10A51484D328E6EBD511425671A58 /* Pods-ZRouter_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZRouter_Example-frameworks.sh"; sourceTree = "<group>"; };
 		69F24EDFDC4F7BF745FA6EC6F5ED10C5 /* Pods-ZRouter_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZRouter_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -58,18 +58,18 @@
 		991E5D2AB64600C31890C16DB9281608 /* MSRouter.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MSRouter.modulemap; sourceTree = "<group>"; };
 		9B1074C0AC934D6477A16F64D167DEF6 /* MSRouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSRouter.debug.xcconfig; sourceTree = "<group>"; };
 		9D289ED063CDEAA6B29FD98800E9AF33 /* Pods-ZRouter_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZRouter_Example-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9FFD7DC36D5D8722FD7E3D2A435E0E0C /* Pods-ZRouter_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZRouter_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A859AD6DBA50C9150710C84219ACF054 /* Pods-ZRouter_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZRouter_Example.modulemap"; sourceTree = "<group>"; };
-		B4AEFFE75586B36E03CC4D8A4D71C688 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		B4AEFFE75586B36E03CC4D8A4D71C688 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B64BC9A2B3785835F1B7B3F0FE654F46 /* MSRouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSRouter.release.xcconfig; sourceTree = "<group>"; };
 		D34DB8425C586CF85A26683D28FD2C6E /* Pods-ZRouter_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZRouter_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		D47D7DB3782201FA278F88688914C4B8 /* Pods-ZRouter_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZRouter_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D512788CB1077729E82A3BA22B28407D /* Pods_ZRouter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZRouter_Tests.framework; path = "Pods-ZRouter_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D512788CB1077729E82A3BA22B28407D /* Pods_ZRouter_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZRouter_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFAB6BEA3457ACDF60D6688CEBCAB160 /* MSRouter-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSRouter-umbrella.h"; sourceTree = "<group>"; };
 		EEE001C36618C41C756F6DB3AD24A12B /* MSRouter-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSRouter-dummy.m"; sourceTree = "<group>"; };
 		F6F90CC79C61B2A2A18AC4006097F62B /* MSRouter-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSRouter-prefix.pch"; sourceTree = "<group>"; };
-		FC9BD12F07E54A96D42D14D2DE947605 /* Pods_ZRouter_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ZRouter_Example.framework; path = "Pods-ZRouter_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC9BD12F07E54A96D42D14D2DE947605 /* Pods_ZRouter_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZRouter_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,7 +316,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -421,7 +421,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-ZRouter_Tests/Pods-ZRouter_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ZRouter_Tests/Pods-ZRouter_Tests.modulemap";
@@ -492,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -520,7 +520,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-ZRouter_Example/Pods-ZRouter_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ZRouter_Example/Pods-ZRouter_Example.modulemap";
@@ -552,7 +552,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MSRouter/MSRouter-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MSRouter/MSRouter-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MSRouter/MSRouter.modulemap";
 				PRODUCT_MODULE_NAME = MSRouter;
@@ -617,13 +617,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -644,7 +643,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-ZRouter_Tests/Pods-ZRouter_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ZRouter_Tests/Pods-ZRouter_Tests.modulemap";
@@ -676,7 +675,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-ZRouter_Example/Pods-ZRouter_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ZRouter_Example/Pods-ZRouter_Example.modulemap";
@@ -709,7 +708,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MSRouter/MSRouter-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MSRouter/MSRouter-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/MSRouter/MSRouter.modulemap";
 				PRODUCT_MODULE_NAME = MSRouter;
