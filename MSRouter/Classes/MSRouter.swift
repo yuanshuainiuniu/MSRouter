@@ -237,7 +237,7 @@ let MSKey = "key"
     ///   - object: target
     ///   - completed: 注册结果
     ///   - handler: action
-    public static func addRouter(withUrl url:String,forObject object:NSObject,completed:((_ success: Bool)->())? = nil,handler:((MSRouterRequest)->())? = nil){
+    public static func addRouter(withUrl url:String,forObject object:NSObject?,completed:((_ success: Bool)->())? = nil,handler:((MSRouterRequest)->())? = nil){
         let manager = ZRouterManager.shared
         DispatchQueue.main.async {
             let hasCache = manager.routerObjectLsit[url] != nil

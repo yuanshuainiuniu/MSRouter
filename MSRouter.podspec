@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MSRouter'
-  s.version          = '0.1.3'
-  s.summary          = '路由组件swift5.0'
+  s.version          = '0.1.4'
+  s.summary          = 'swift路由组件'
 
 
   s.homepage         = 'https://github.com/yuanshuainiuniu/MSRouter.git'

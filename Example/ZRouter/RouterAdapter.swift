@@ -10,7 +10,7 @@ import UIKit
 
 class RouterAdapter:NSObject {
     static func addRouter(){
-        MSRouter.addRouter(withUrl: "RouterAdapter1", forObject: RouterAdapter(), completed: nil) { (request) in
+        MSRouter.addRouter(withUrl: "RouterAdapter1", forObject: nil, completed: nil) { (request) in
             let vc = ViewController3()
             MSRouter.getNavigation()?.pushViewController(vc, animated: true)
         }
