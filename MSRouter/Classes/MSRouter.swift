@@ -339,13 +339,13 @@ struct ZRouterObject {
 }
 
 extension NSObject:MSRouterProtocol{
-    public func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
+    open func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
         let response = MSRouterResponse()
         response.object = self
         return response
     }
 
-    public var ms_routerRequest:MSRouterRequest?{
+    open var ms_routerRequest:MSRouterRequest?{
         get{
             return objc_getAssociatedObject(self, AssociateKeys.ms_routerKey) as? MSRouterRequest
         }
