@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     
 
     @IBAction func clickAction(_ sender: UIButton) {
-        MSRouter.handleUrl("vc1?title=vc1&present=0", ["callback":callBack])
+        MSRouter.handleUrl("vc1?title=vc1&presented=1", ["callback":callBack])
     }
     @IBAction func clickV2(_ sender: Any) {
         MSRouter.handleUrl("vc2?title=vc2", ["callback":callBack])

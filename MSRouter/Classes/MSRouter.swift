@@ -24,11 +24,11 @@ let MSKey = "key"
     /// 解析后参数
     public var params:[AnyHashable:Any]?{
         didSet{
-            if let animated = params?["animate"] as? Bool{
-                self.animated = animated
+            if let animated = params?["animate"] as? String,let value = animated.ms_toBool(){
+                self.animated = value
             }
-            if let presented = params?["presented"] as? Bool{
-                self.presented = presented
+            if let presented = params?["presented"] as? String,let value = presented.ms_toBool(){
+                self.presented = value
             }
             if let presentedType = params?["presentedType"] as? String{
                 if presentedType  == "auto"{
@@ -66,6 +66,8 @@ let MSKey = "key"
     
     /// present样式
     public var presentedType:UIModalPresentationStyle = .fullScreen
+    
+    
 }
 
 /// 路由响应处理类
@@ -372,5 +374,17 @@ public extension Bundle{
            bundlePath = Bundle.main.path(forResource: fullPath, ofType: "bundle")
        }
        return Bundle(path: bundlePath ?? "")
+    }
+}
+public extension String{
+    func ms_toBool() -> Bool? {
+        switch self {
+        case "True","TRUE", "true","YES", "yes", "1":
+            return true
+        case "False","FALSE", "false","NO", "no", "0":
+            return false
+        default:
+            return nil
+        }
     }
 }

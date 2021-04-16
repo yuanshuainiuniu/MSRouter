@@ -53,7 +53,7 @@ class V1RouterBridge:NSObject {
     override func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
         let res = MSRouterResponse()
         res.object = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "ViewController1")
-        request.presented = true
+//        request.presented = true
         print("拦截了路由\(String(describing: request.params))")
         if let callback = request.nativeParams?["callback"] as? (String)->(){
             callback("路由被拦截")
