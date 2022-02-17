@@ -179,6 +179,8 @@ let MSKey = "key"
     ///   - name: module 名称，为空的话默认主工程module
     ///   - completed: 返回注册失败的路由
     public static func addRouter(withPlistPath plistPath:String?,forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
+        let sema = DispatchSemaphore.init(value: 1)
+        sema.wait()
         DispatchQueue.global().async {
             guard let plistPath = plistPath else { return }
             guard let list = NSArray(contentsOfFile: plistPath) as? [[AnyHashable:Any]] else { return }
@@ -199,6 +201,7 @@ let MSKey = "key"
                     ZRouterManager.shared.routerList.append(module)
                 }
             }
+            sema.signal()
             DispatchQueue.main.async {
                 completed?(temp)
             }
@@ -211,6 +214,8 @@ let MSKey = "key"
     ///   - name: module 名称，为空的话默认主工程module
     ///   - completed: 返回注册失败的路由
     public static func addRouter(withParams params:[AnyHashable:Any],forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
+        let sema = DispatchSemaphore.init(value: 1)
+        sema.wait()
         DispatchQueue.global().async {
             var temp = [String]()
             let moduleName = (name ?? "")
@@ -227,6 +232,7 @@ let MSKey = "key"
                 module[MSModule] = moduleName
                 ZRouterManager.shared.routerList.append(module)
             }
+            sema.signal()
             DispatchQueue.main.async {
                 completed?(temp)
             }
