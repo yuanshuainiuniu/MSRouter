@@ -8,13 +8,13 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MSRouter'
-  s.version          = '0.1.8'
+  s.version          = '0.2.0'
   s.summary          = 'swift路由组件'
 
 
   s.homepage         = 'https://github.com/yuanshuainiuniu/MSRouter.git'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Marshal' => 'marshal819@zto.com' }
+  s.author           = { 'Marshal' => '717999274@qq.com' }
   s.source           = { :git => 'https://github.com/yuanshuainiuniu/MSRouter.git', :tag => s.version }
 
   s.ios.deployment_target = '9.0'

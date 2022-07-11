@@ -148,7 +148,8 @@ let MSKey = "key"
     /// - Parameter fromUrl: 路由地址
     /// - Returns: 返回类实例
     public static func getObjectClass(fromUrl:String) -> AnyObject?{
-        for item in ZRouterManager.shared.routerList {
+        let routerList = ZRouterManager.shared.routerList
+        for item in routerList{
             if let map = item as? [String:Any],let host = getHost(fromUrl: fromUrl) {
                 if let url = map[MSUrl] as? String,host == url {
                     if let object = map[MSObject] as? String {
@@ -179,17 +180,17 @@ let MSKey = "key"
     ///   - name: module 名称，为空的话默认主工程module
     ///   - completed: 返回注册失败的路由
     public static func addRouter(withPlistPath plistPath:String?,forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
-        let sema = DispatchSemaphore.init(value: 1)
         sema.wait()
         DispatchQueue.global().async {
             guard let plistPath = plistPath else { return }
             guard let list = NSArray(contentsOfFile: plistPath) as? [[AnyHashable:Any]] else { return }
             var temp = [String]()
             let moduleName = (name ?? "")
+            let routerList = ZRouterManager.shared.routerList
             for item in list{
                 if let url = item[MSUrl] as? String{
                     let moduleUrl = url + moduleName
-                    for cacheItem in ZRouterManager.shared.routerList {
+                    for cacheItem in  routerList{
                         if let cacheUrl = cacheItem[MSKey] as? String,cacheUrl == moduleUrl {
                             temp.append(url)
                             break
@@ -213,15 +214,16 @@ let MSKey = "key"
     ///   - params: {url:String,object:String}
     ///   - name: module 名称，为空的话默认主工程module
     ///   - completed: 返回注册失败的路由
+    static let sema = DispatchSemaphore.init(value: 1)
     public static func addRouter(withParams params:[AnyHashable:Any],forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
-        let sema = DispatchSemaphore.init(value: 1)
         sema.wait()
         DispatchQueue.global().async {
             var temp = [String]()
             let moduleName = (name ?? "")
             if let url = params[MSUrl] as? String{
                 let moduleUrl = url + moduleName
-                for cacheItem in ZRouterManager.shared.routerList {
+                let routerList = ZRouterManager.shared.routerList
+                for cacheItem in  routerList{
                     if let cacheUrl = cacheItem[MSKey] as? String,cacheUrl == moduleUrl {
                         temp.append(url)
                         break
