@@ -27,13 +27,16 @@ pod 'MSRouter'
 ```swift
 //1.手动注册路由,如果已经被注册过，返回注册失败的路由地址
 //参数key为固定参数，url：注册链接，object：路由处理对象的classString
+//因swift存在命名空间，需要配置moduleName，一般为object类所在的target名称，如未配置，默认取 Bundle.main.infoDictionary?["CFBundleExecutable"]
 MSRouter.addRouter(withParams: ["url":"vc1","object":"V1RouterBridge"], forModule: moduleName) { (res) in
     print("注册失败的链接：\(res)")
     
     
 }
 //2.通过配置文件注册路由，如果已经被注册过，返回注册失败的路由地址
-//plist为数组类型，[["url":"xx","object":"xxx"],["url":"xx","object":"xxx"]]
+//plist为数组类型，[["url":"xx","object":"xxx","module":"xxx"],["url":"xx","object":"xxx","module":"xxx"]]
+//因swift存在命名空间，需要配置moduleName，一般为object类所在的target名称，如未配置，默认取 Bundle.main.infoDictionary?["CFBundleExecutable"]
+
 let path = Bundle.main.path(forResource: "router", ofType: "plist")
 MSRouter.addRouter(withPlistPath: path, forModule: moduleName) { (res) in
     print("注册失败的链接：\(res)")

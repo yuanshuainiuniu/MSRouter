@@ -159,11 +159,16 @@ let MSKey = "key"
                             if let module = map[MSModule] as? String,!module.isEmpty {
                                 moduleName = module
                             }else{
-                                moduleName = Bundle.main.infoDictionary?["CFBundleExecutable"] as! String
+                                moduleName = Bundle.main.infoDictionary?["CFBundleExecutable"] as? String ?? ""
+                                moduleName = moduleName.replacingOccurrences(of: "-", with: "_")
                             }
                             className = NSClassFromString("\(moduleName).\(object)")
-
+                            if className == nil {
+                                let ttcname = "_TtC\(moduleName.count)\(moduleName)\(object.count)\(object)"
+                                className  = NSClassFromString(ttcname)
+                            }
                         }
+
                         return className
                     }
                 }
@@ -177,6 +182,8 @@ let MSKey = "key"
     /// 通过plist列表注册路由
     /// - Parameters:
     ///   - plistPath: plist路径
+    ///   plist:{"url","module","object"},url:路由链接，module:命名空间,object:反射的类，优先取配置的module
+    ///
     ///   - name: module 名称，为空的话默认主工程module
     ///   - completed: 返回注册失败的路由
     public static func addRouter(withPlistPath plistPath:String?,forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
@@ -185,10 +192,13 @@ let MSKey = "key"
             guard let plistPath = plistPath else { return }
             guard let list = NSArray(contentsOfFile: plistPath) as? [[AnyHashable:Any]] else { return }
             var temp = [String]()
-            let moduleName = (name ?? "")
+            var moduleName = (name ?? "")
             let routerList = ZRouterManager.shared.routerList
             for item in list{
                 if let url = item[MSUrl] as? String{
+                    if let defModule = item[MSModule] as? String,defModule.count > 0 {
+                        moduleName = defModule
+                    }
                     let moduleUrl = url + moduleName
                     for cacheItem in  routerList{
                         if let cacheUrl = cacheItem[MSKey] as? String,cacheUrl == moduleUrl {

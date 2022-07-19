@@ -3,12 +3,16 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>module</key>
+		<string>ZRouter_Example</string>
 		<key>url</key>
 		<string>vc1</string>
 		<key>object</key>
 		<string>V1RouterBridge</string>
 	</dict>
 	<dict>
+		<key>module</key>
+		<string>ZRouter_Example</string>
 		<key>url</key>
 		<string>vc2</string>
 		<key>object</key>
