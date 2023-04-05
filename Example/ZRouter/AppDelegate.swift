@@ -29,6 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MSRouter.addRouter(withPlistPath: path, forModule: moduleName) { (res) in
             print("注册失败的链接：\(res)")
         }
+        let path1 = Bundle.main.path(forResource: "router1", ofType: "plist")
+        for _ in 0..<1000 {
+            MSRouter.addRouter(withPlistPath: path1, forModule: moduleName) { (res) in
+                print("注册失败的链接：\(res)")
+            }
+            MSRouter.addRouter(withPlistPath: path1)
+        }
+        
         //通过object注册
         RouterAdapter.addRouter()
         return true

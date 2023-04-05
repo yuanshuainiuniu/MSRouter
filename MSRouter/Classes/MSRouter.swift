@@ -100,7 +100,7 @@ let MSKey = "key"
     ///   - nativeParams: {block:回调}
     @discardableResult
     public static func handleUrl(_ url:String,_ nativeParams:[AnyHashable:Any]?) -> Bool?{
-        
+        sema.wait()
         var handler:Any? = nil
         if let routerObject = ZRouterManager.shared.routerObjectLsit[url] {
             handler = routerObject
@@ -121,6 +121,8 @@ let MSKey = "key"
                 }
               if let handlerBlock = router.handler{
                     handlerBlock(request)
+                    sema.signal()
+
                     return true
               }
             }
@@ -138,9 +140,10 @@ let MSKey = "key"
                     navi.pushViewController(vc, animated: request.animated)
                 }
             }
-            
+            sema.signal()
             return true
         }
+        sema.signal()
         return false
     }
     
@@ -189,8 +192,19 @@ let MSKey = "key"
     public static func addRouter(withPlistPath plistPath:String?,forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
         sema.wait()
         DispatchQueue.global().async {
-            guard let plistPath = plistPath else { return }
-            guard let list = NSArray(contentsOfFile: plistPath) as? [[AnyHashable:Any]] else { return }
+            guard let plistPath = plistPath else {
+                sema.signal()
+                print("MSRouter 路径不能为空")
+                return
+                
+            }
+            guard let list = NSArray(contentsOfFile: plistPath) as? [[AnyHashable:Any]] else {
+                sema.signal()
+                print("MSRouter 检查plist文件是否有问题")
+
+                return
+                
+            }
             var temp = [String]()
             var moduleName = (name ?? "")
             let routerList = ZRouterManager.shared.routerList
@@ -378,7 +392,7 @@ extension NSObject:MSRouterProtocol{
     }
 }
 public extension Bundle{
-    @objc class func ms_buldle(forModule name:String) -> Bundle? {
+    @objc class func ms_buldle(forModule name:String,bundleName:String? = nil) -> Bundle? {
         var bundlePath:String?
        if let path = Bundle.main.path(forResource: name, ofType: "bundle") {
            bundlePath = path
@@ -387,8 +401,8 @@ public extension Bundle{
         if path1.contains("-") {
             path1 = path1.replacingOccurrences(of: "-", with: "_")
         }
-        let fullPath = "Frameworks/" + path1 + ".framework/" + name
-        
+       
+        let fullPath = "Frameworks/" + path1 + ".framework/" + (bundleName ?? name)
            bundlePath = Bundle.main.path(forResource: fullPath, ofType: "bundle")
        }
        return Bundle(path: bundlePath ?? "")
