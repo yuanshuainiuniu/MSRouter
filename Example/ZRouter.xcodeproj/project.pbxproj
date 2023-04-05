@@ -18,7 +18,6 @@
 		F396C91C25E8E7C8000AF0CD /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = F396C91B25E8E7C8000AF0CD /* ViewController3.m */; };
 		F396C92025E8E830000AF0CD /* RouterAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F396C91F25E8E830000AF0CD /* RouterAdapter.swift */; };
 		F396C92725E8EBE6000AF0CD /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F396C92625E8EBE6000AF0CD /* BaseViewController.swift */; };
-		F39CD4D429DD34A500CBA216 /* router1.plist in Resources */ = {isa = PBXBuildFile; fileRef = F39CD4D329DD34A500CBA216 /* router1.plist */; };
 		F3AC2B4525CFECEB00031BAD /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC2B4425CFECEB00031BAD /* ViewController1.swift */; };
 		F3AC2B5825CFFDCD00031BAD /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AC2B5625CFFDCD00031BAD /* ViewController2.swift */; };
 		F3AC2B5925CFFDCE00031BAD /* ViewController2.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3AC2B5725CFFDCD00031BAD /* ViewController2.xib */; };
@@ -61,7 +60,6 @@
 		F396C91B25E8E7C8000AF0CD /* ViewController3.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
 		F396C91F25E8E830000AF0CD /* RouterAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterAdapter.swift; sourceTree = "<group>"; };
 		F396C92625E8EBE6000AF0CD /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		F39CD4D329DD34A500CBA216 /* router1.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = router1.plist; sourceTree = "<group>"; };
 		F3AC2B4425CFECEB00031BAD /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
 		F3AC2B5625CFFDCD00031BAD /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		F3AC2B5725CFFDCD00031BAD /* ViewController2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController2.xib; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 		F3F0098225D128CA00FDCBF1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				F39CD4D329DD34A500CBA216 /* router1.plist */,
 				F3F0098325D128CA00FDCBF1 /* router.plist */,
 			);
 			path = Assets;
@@ -304,7 +301,6 @@
 				F3AC2B5925CFFDCE00031BAD /* ViewController2.xib in Resources */,
 				F3F0098525D128CA00FDCBF1 /* router.plist in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				F39CD4D429DD34A500CBA216 /* router1.plist in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
