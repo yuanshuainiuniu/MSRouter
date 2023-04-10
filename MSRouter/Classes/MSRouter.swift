@@ -440,13 +440,13 @@ struct ZRouterObject {
 }
 
 extension NSObject:MSRouterProtocol{
-    public func ms_handleRouter(_ request: MSRouterRequest) -> Any? {
+    open func ms_handleRouter(_ request: MSRouterRequest) -> Any? {
         let response = MSRouterResponse()
         response.object = self
         response.request = request
         return response
     }
-    public func ms_asyncHandleRouter(_ request: MSRouterRequest, callBack: ((Any?) -> (Void))?) {
+    open func ms_asyncHandleRouter(_ request: MSRouterRequest, callBack: ((Any?) -> (Void))?) {
         
     }
 
