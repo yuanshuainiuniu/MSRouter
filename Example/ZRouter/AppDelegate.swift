@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MSRouter.addRouter(withParams: ["url":"vc1","object":"V1RouterBridge"], forModule: moduleName) { (res) in
             print("注册失败的链接：\(res)")
             
-            
         }
         //通过配置文件注册路由
         let path = Bundle.main.path(forResource: "router", ofType: "plist")
@@ -30,13 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("注册失败的链接：\(res)")
         }
         let path1 = Bundle.main.path(forResource: "router1", ofType: "plist")
-        for _ in 0..<1000 {
-            MSRouter.addRouter(withPlistPath: path1, forModule: moduleName) { (res) in
-                print("注册失败的链接：\(res)")
-            }
-            MSRouter.addRouter(withPlistPath: path1)
-        }
-        
+        MSRouter.addRouter(withPlistPath: path1)
+
+//        for _ in 0..<1000{
+//            MSRouter.addRouter(withPlistPath: path, forModule: moduleName) { (res) in
+//                print("注册失败的链接：\(res)")
+//            }
+//        }
+//        DispatchQueue.global().async {
+//            for _ in 0..<1000{
+//                MSRouter.addRouter(withPlistPath: path, forModule: moduleName) { (res) in
+//                    print("注册失败的链接：\(res)")
+//                }
+//            }
+//        }
         //通过object注册
         RouterAdapter.addRouter()
         return true

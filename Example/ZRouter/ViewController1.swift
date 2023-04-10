@@ -50,10 +50,10 @@ class ViewController1: UIViewController {
 }
 
 class V1RouterBridge:NSObject {
-    override func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
+    override func ms_handleRouter(_ request: MSRouterRequest) -> Any? {
         let res = MSRouterResponse()
         res.object = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "ViewController1")
-//        request.presented = true
+        request.presented = true
         print("拦截了路由\(String(describing: request.params))")
         if let callback = request.nativeParams?["callback"] as? (String)->(){
             callback("路由被拦截")
@@ -61,4 +61,17 @@ class V1RouterBridge:NSObject {
         return res
     }
     
+}
+
+class CallDataBridge:NSObject{
+    ///同步方法拦截
+    override func ms_handleRouter(_ request: MSRouterRequest) -> Any? {
+        return "123"
+    }
+    ///异步方法拦截
+    override func ms_asyncHandleRouter(_ request: MSRouterRequest, callBack: ((Any?) -> (Void))?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            callBack?("1234")
+        }
+    }
 }

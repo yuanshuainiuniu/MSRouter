@@ -80,28 +80,56 @@ let MSKey = "key"
     }
     ///路由处理对象
     public var object:Any? = nil
-    
+    ///请求体
+    public var request:MSRouterRequest? = nil
 }
 
 /// 路由拦截协议
 @objc public protocol MSRouterProtocol:NSObjectProtocol{
     /// 路由处理
     /// - Parameter request:
-    @objc optional func ms_handleRouter(_ request:MSRouterRequest) -> MSRouterResponse?
-    
+    @objc optional func ms_handleRouter(_ request:MSRouterRequest) -> Any?
+    @objc optional func ms_asyncHandleRouter(_ request:MSRouterRequest,callBack:((_ data:Any?)->(Void))?)
 }
 
 @objc public class MSRouter:NSObject {
     
     
-    /// 处理路由
+    /// 打开路由页面，url注册的object要为UIViewController类型
     /// - Parameters:
     ///   - url: 路由地址
     ///   - nativeParams: {block:回调}
     @discardableResult
-    public static func handleUrl(_ url:String,_ nativeParams:[AnyHashable:Any]?) -> Bool?{
+    public static func openUrl(_ url:String,_ nativeParams:[AnyHashable:Any]?) -> Any?{
+        let response = callData(url, nativeParams) as? MSRouterResponse
+        guard let handler = response?.object else { return false }
+        var result = false
+        DispatchQueue.main.async {
+            if let vc = handler as? UIViewController,let navi = getNavigation(),let request = response?.request{
+                vc.ms_routerRequest = request
+                if request.presented {
+                    vc.modalPresentationStyle = request.presentedType
+                    navi.present(vc, animated: request.animated, completion: nil)
+                }else{
+                    navi.pushViewController(vc, animated: request.animated)
+                }
+                result = true
+            }
+        }
+        
+        return result
+    }
+    
+    /// 同步执行
+    /// - Parameters:
+    ///   - url: 执行的key
+    ///   - nativeParams: 原生参数
+    @discardableResult
+    public static func callData(_ url:String,_ nativeParams:[AnyHashable:Any]?) ->Any?{
         sema.wait()
         var handler:Any? = nil
+        var response:Any? = nil
+        
         if let routerObject = ZRouterManager.shared.routerObjectLsit[url] {
             handler = routerObject
             
@@ -123,28 +151,66 @@ let MSKey = "key"
                     handlerBlock(request)
                     sema.signal()
 
-                    return true
+                    return response
               }
             }
+            
             if mDelegate.responds(to: #selector(MSRouterProtocol.ms_handleRouter(_:))) {
-                if let response = mDelegate.ms_handleRouter?(request) {
-                    handler = response.object
-                }
-            }
-            if let vc = handler as? UIViewController,let navi = getNavigation(){
-                vc.ms_routerRequest = request
-                if request.presented {
-                    vc.modalPresentationStyle = request.presentedType
-                    navi.present(vc, animated: request.animated, completion: nil)
-                }else{
-                    navi.pushViewController(vc, animated: request.animated)
-                }
+                response = mDelegate.ms_handleRouter?(request)
+                (response as? MSRouterResponse)?.request = request
             }
             sema.signal()
-            return true
+            return response
         }
         sema.signal()
-        return false
+        return response
+    }
+    
+    /// 异步执行
+    /// - Parameters:
+    ///   - url
+    ///   - nativeParams
+    ///   - callBack
+    public static func asyncCallData(_ url:String,_ nativeParams:[AnyHashable:Any]?,callBack:((_ result:Any?)->(Void))?){
+        
+        sema.wait()
+        var handler:Any? = nil
+        
+        if let routerObject = ZRouterManager.shared.routerObjectLsit[url] {
+            handler = routerObject
+            
+        }else if let objectClass = getObjectClass(fromUrl: url) as? NSObject.Type {
+            handler = objectClass.init()
+        }
+        routerQueue.async {
+            if let delegate:MSRouterProtocol = handler as? MSRouterProtocol{
+                let request = MSRouterRequest()
+                request.url = url
+                request.nativeParams = nativeParams
+                request.params = getParams(fromUrl: url)
+                
+                var mDelegate:MSRouterProtocol = delegate
+                if let router = handler as? ZRouterObject{
+                    if let handleObject = router.object{
+                        mDelegate = handleObject
+                    }
+                  if let handlerBlock = router.handler{
+                      DispatchQueue.main.async {
+                          handlerBlock(request)
+                          callBack?(nil)
+                      }
+                  }
+                }else if mDelegate.responds(to: #selector(MSRouterProtocol.ms_asyncHandleRouter(_:callBack:))) {
+                    mDelegate.ms_asyncHandleRouter?(request, callBack: { data in
+                        DispatchQueue.main.async {
+                            callBack?(data)
+                        }
+                    })
+                }
+            }
+        }
+        sema.signal()
+
     }
     
     /// 获取注册的路由类
@@ -191,7 +257,7 @@ let MSKey = "key"
     ///   - completed: 返回注册失败的路由
     public static func addRouter(withPlistPath plistPath:String?,forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
         sema.wait()
-        DispatchQueue.global().async {
+        routerQueue.async {
             guard let plistPath = plistPath else {
                 sema.signal()
                 print("MSRouter 路径不能为空")
@@ -239,9 +305,10 @@ let MSKey = "key"
     ///   - name: module 名称，为空的话默认主工程module
     ///   - completed: 返回注册失败的路由
     static let sema = DispatchSemaphore.init(value: 1)
+    static let routerQueue = DispatchQueue(label: "com.msrouter.serialQueue")
     public static func addRouter(withParams params:[AnyHashable:Any],forModule name:String? = nil,completed:((_ failedUrls:[String])->())? = nil){
         sema.wait()
-        DispatchQueue.global().async {
+        routerQueue.async {
             var temp = [String]()
             let moduleName = (name ?? "")
             if let url = params[MSUrl] as? String{
@@ -273,7 +340,7 @@ let MSKey = "key"
     ///   - handler: action
     public static func addRouter(withUrl url:String,forObject object:NSObject?,completed:((_ success: Bool)->())? = nil,handler:((MSRouterRequest)->())? = nil){
         let manager = ZRouterManager.shared
-        DispatchQueue.main.async {
+        routerQueue.async {
             let hasCache = manager.routerObjectLsit[url] != nil
             if !hasCache{
                 var router = ZRouterObject()
@@ -373,13 +440,17 @@ struct ZRouterObject {
 }
 
 extension NSObject:MSRouterProtocol{
-    open func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
+    public func ms_handleRouter(_ request: MSRouterRequest) -> Any? {
         let response = MSRouterResponse()
         response.object = self
+        response.request = request
         return response
     }
+    public func ms_asyncHandleRouter(_ request: MSRouterRequest, callBack: ((Any?) -> (Void))?) {
+        
+    }
 
-    open var ms_routerRequest:MSRouterRequest?{
+    public var ms_routerRequest:MSRouterRequest?{
         get{
             return objc_getAssociatedObject(self, AssociateKeys.ms_routerKey) as? MSRouterRequest
         }

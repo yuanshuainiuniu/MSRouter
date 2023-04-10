@@ -18,5 +18,13 @@
 		<key>object</key>
 		<string>ViewController2</string>
 	</dict>
+	<dict>
+		<key>module</key>
+		<string>ZRouter_Example</string>
+		<key>url</key>
+		<string>CallDataBridge</string>
+		<key>object</key>
+		<string>CallDataBridge</string>
+	</dict>
 </array>
 </plist>

@@ -56,6 +56,17 @@ var callBack = { (data:String) in
 }
 MSRouter.handleUrl("vc1?title=vc1&present=0", ["callback":callBack])
 MSRouter.handleUrl("vc2?title=vc2", ["callback":callBack])
+@IBAction func dosync(_ sender: Any) {
+  let res =  MSRouter.callData("CallDataBridge", nil) as? String
+    print("同步执行结果\(res ?? "")")
+}
+    
+@IBAction func doAsync(_ sender: Any) {
+    MSRouter.asyncCallData("CallDataBridge", nil) { result in
+        let res = result as? String
+        print("异步同步执行结果\(res ?? "")")
+    }
+}
 
 //注册类的参数解析后可通过ms_routerRequest进行访问
 
@@ -79,7 +90,7 @@ override func viewDidLoad() {
 ```swift
 //通过MSRouterProtocol协议拦截路由，自定义处理逻辑，注路由拦截类必须继承自NSObject
 class V1RouterBridge:NSObject {
-    override func ms_handleRouter(_ request: MSRouterRequest) -> MSRouterResponse? {
+    override func ms_handleRouter(_ request: MSRouterRequest) -> Any? {
         let res = MSRouterResponse()
         res.object = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "ViewController1")
         request.presented = true
@@ -88,6 +99,20 @@ class V1RouterBridge:NSObject {
             callback("路由被拦截")
         }
         return res
+    }
+    
+}
+
+class CallDataBridge:NSObject{
+    ///同步方法拦截
+    override func ms_handleRouter(_ request: MSRouterRequest) -> Any? {
+        return "123"
+    }
+    ///异步方法拦截
+    override func ms_asyncHandleRouter(_ request: MSRouterRequest, callBack: ((Any?) -> (Void))?) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            callBack?("1234")
+        }
     }
 }
 ```
