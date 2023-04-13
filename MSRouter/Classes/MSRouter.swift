@@ -105,7 +105,7 @@ let MSKey = "key"
         guard let handler = response?.object else { return false }
         var result = false
         DispatchQueue.main.async {
-            if let vc = handler as? UIViewController,let navi = getNavigation(),let request = response?.request{
+            if let vc = handler as? UIViewController,let request = response?.request,let navi =  (request.routerFrom ?? getNavigation()){
                 vc.ms_routerRequest = request
                 if request.presented {
                     vc.modalPresentationStyle = request.presentedType
@@ -380,9 +380,13 @@ let MSKey = "key"
                 return presentVC as? UINavigationController
             }
             if root.isKind(of: UITabBarController.self) {
-                return (root as? UITabBarController)?.selectedViewController as? UINavigationController
+                let navi = (root as? UITabBarController)?.selectedViewController as? UINavigationController
+                let visibleViewControllerNavi = navi?.visibleViewController?.navigationController
+                return visibleViewControllerNavi ?? navi
             }else if(root.isKind(of: UINavigationController.self)){
                 return root as? UINavigationController
+            }else if(root.isKind(of: UIViewController.self)){
+                return root.navigationController
             }
         }
         return nil
