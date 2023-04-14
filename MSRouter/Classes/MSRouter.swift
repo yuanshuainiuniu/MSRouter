@@ -99,24 +99,23 @@ let MSKey = "key"
     /// - Parameters:
     ///   - url: 路由地址
     ///   - nativeParams: {block:回调}
+    ///   请在主线程调用
     @discardableResult
     public static func openUrl(_ url:String,_ nativeParams:[AnyHashable:Any]?) -> Any?{
+        assert(Thread.isMainThread,"openUrl must called in main thread")
         let response = callData(url, nativeParams) as? MSRouterResponse
         guard let handler = response?.object else { return false }
         var result = false
-        DispatchQueue.main.async {
-            if let vc = handler as? UIViewController,let request = response?.request,let navi =  (request.routerFrom ?? getNavigation()){
-                vc.ms_routerRequest = request
-                if request.presented {
-                    vc.modalPresentationStyle = request.presentedType
-                    navi.present(vc, animated: request.animated, completion: nil)
-                }else{
-                    navi.pushViewController(vc, animated: request.animated)
-                }
-                result = true
+        if let vc = handler as? UIViewController,let request = response?.request,let navi =  (request.routerFrom ?? getNavigation()){
+            vc.ms_routerRequest = request
+            if request.presented {
+                vc.modalPresentationStyle = request.presentedType
+                navi.present(vc, animated: request.animated, completion: nil)
+            }else{
+                navi.pushViewController(vc, animated: request.animated)
             }
+            result = true
         }
-        
         return result
     }
     
@@ -384,9 +383,13 @@ let MSKey = "key"
                 let visibleViewControllerNavi = navi?.visibleViewController?.navigationController
                 return visibleViewControllerNavi ?? navi
             }else if(root.isKind(of: UINavigationController.self)){
-                return root as? UINavigationController
+                let navi = root as? UINavigationController
+                let visibleViewControllerNavi = navi?.visibleViewController?.navigationController
+                return visibleViewControllerNavi ?? navi
             }else if(root.isKind(of: UIViewController.self)){
-                return root.navigationController
+                let navi = root.navigationController
+                let visibleViewControllerNavi = navi?.visibleViewController?.navigationController
+                return visibleViewControllerNavi ?? navi
             }
         }
         return nil
